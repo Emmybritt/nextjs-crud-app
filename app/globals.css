@@ -1,0 +1,17 @@
+@import url("https://fonts.cdnfonts.com/css/satoshi");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	color: rgb(var(--foreground-rgb));
+	background: #f0f2f5;
+	@apply font-satishi;
+}
+
+@layer utilities {
+	.text-balance {
+		text-wrap: balance;
+	}
+}
