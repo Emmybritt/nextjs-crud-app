@@ -28,7 +28,7 @@ const SideBar = () => {
 			</div>
 			<hr className="mt-2" />
 			<Button
-				className="border absolute bottom-2 h-[44px]"
+				className="border absolute bottom-2 h-[44px] w-[94%]"
 				leftIcon={<Image alt="Sign out" src="/SignOut.png" height={20} width={20} />}
 				label="Back to dashboard"
 			/>

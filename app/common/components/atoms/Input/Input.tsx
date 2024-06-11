@@ -38,7 +38,7 @@ export const CustomInput: React.FC<CustomInput> = ({
 				<Input
 					readOnly={readOnly}
 					id={label}
-					className={`h-[56px] w-[100%] font-medium text-sm ${className}`}
+					className={`h-[50px] w-[100%] font-medium text-sm ${className}`}
 					value={value}
 					placeholder={placeholder}
 					type={type}
@@ -51,7 +51,7 @@ export const CustomInput: React.FC<CustomInput> = ({
 				<Input.Password
 					readOnly={readOnly}
 					id={label}
-					className={`h-[56px] w-[100%] ${className}`}
+					className={`h-[50px] w-[100%] ${className}`}
 					value={value}
 					placeholder={placeholder}
 					type={type}

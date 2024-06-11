@@ -20,7 +20,7 @@ interface IButton {
 	loading?: boolean;
 }
 export const Button: React.FC<IButton> = ({ label, onClick, className, backgroundColor = "#6938EF", isDisabled, leftIcon, rightIcon, loading }) => {
-	const classNameData = `${className} h-[40px] rounded-md space-x-2 justify-center flex flex-row items-center w-[95%] bg-[${backgroundColor}]`;
+	const classNameData = `${className} h-[40px] rounded-md space-x-2 justify-center flex flex-row items-center w-[100%] bg-[${backgroundColor}]`;
 	return (
 		<button onClick={onClick} disabled={isDisabled} className={classNameData}>
 			{loading ? (
