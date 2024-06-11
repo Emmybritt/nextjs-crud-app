@@ -119,10 +119,10 @@ const UsersTable = () => {
 			<div className="w-[100%]">
 				<div className="bg-white flex items-center justify-between p-[1.5rem]">
 					<div className="flex items-center space-x-1">
-						<CustomInput className="lg:w-[291px] md:w-[180px] h-[30px]" type="text" prefix={<SearchOutlined />} placeholder="Search Here..." />
+						<CustomInput className="lg:w-[300px] md:w-[180px] h-[29px]" type="text" prefix={<SearchOutlined />} placeholder="Search Here..." />
 						<Button
 							label="Filter"
-							className="font-medium w-[105px] border border-[#CBD5E1]  h-[30px]"
+							className="font-medium w-[115px] border border-[#CBD5E1]  h-[30px]"
 							leftIcon={<Image alt="plus" src="/button-icon.png" height={16.25} width={16.25} />}
 						/>
 					</div>
@@ -130,7 +130,7 @@ const UsersTable = () => {
 						<Button
 							label="New User"
 							onClick={handleOpen}
-							className="bg-[#0D6EFD] text-white text-[14px] w-[190px] h-[28px]"
+							className="bg-[#0D6EFD] text-white text-[14px] w-[200px] h-[28px]"
 							leftIcon={<Image alt="plus" src="/CirclePlus.png" height={16.25} width={16.25} />}
 						/>
 					</div>
