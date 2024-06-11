@@ -10,7 +10,7 @@ const SideBar = () => {
 	const pathname = usePathname();
 
 	return (
-		<div className="w-[224px] h-[710px] rounded-md bg-white drop-shadow-md sticky p-[.5rem]">
+		<div className="w-[224px] h-[710px] rounded-md bg-white drop-shadow-md hidden mn:block sticky p-[.5rem]">
 			<h3 className="mb-[1rem] text-[#334155] pt-[.9rem]">Settings</h3>
 			<div className="">
 				{SideBarData.map((data, _index: number) => {

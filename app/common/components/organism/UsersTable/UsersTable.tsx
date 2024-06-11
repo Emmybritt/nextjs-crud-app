@@ -54,8 +54,8 @@ const columns: TableColumnsType<DataType> = [
 				color = "#0F973D";
 				background = "#E7F6EC";
 			} else if (role === "Administrator") {
-				background = "#0D6EFD";
-				color = "#F0F6FE";
+				color = "#0D6EFD";
+				background = "#F0F6FE";
 			} else {
 				background = "#FEF4E6";
 				color = "#F58A07";
@@ -92,6 +92,9 @@ const UsersTable = () => {
 		handleDeleteUser,
 		editUser,
 		isLoading,
+		isEditUser,
+		updateUserData,
+		isUpdating,
 	} = useUser();
 
 	const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
@@ -106,6 +109,8 @@ const UsersTable = () => {
 	return (
 		<>
 			<ModalComponent
+				updateUserData={updateUserData}
+				isEditUser={isEditUser}
 				isLoading={isLoading}
 				open={isOpen}
 				handleOk={handleOk}
@@ -115,8 +120,9 @@ const UsersTable = () => {
 				handleChange={handleChange}
 				isDisabled={isDisabled}
 				submit={createUser}
+				isUpdating={isUpdating}
 			/>
-			<div className="w-[100%]">
+			<div className="w-[100%] overflow-x-auto">
 				<div className="bg-white flex items-center justify-between p-[1.5rem]">
 					<div className="flex items-center space-x-1">
 						<CustomInput className="lg:w-[300px] md:w-[180px] h-[29px]" type="text" prefix={<SearchOutlined />} placeholder="Search Here..." />

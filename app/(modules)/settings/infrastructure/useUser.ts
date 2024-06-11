@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { User } from "../../core/infrastructure/domain/user";
-import { useCreateUserMutation, useDeleteUserMutation, useFindManyUsersQuery } from "../../core/infrastructure/api/userApiSlice";
+import {
+	useCreateUserMutation,
+	useDeleteUserMutation,
+	useFindManyUsersQuery,
+	useUpdateUserMutation,
+} from "../../core/infrastructure/api/userApiSlice";
 import { toast } from "react-toastify";
 export type FormAttr = Omit<User, "id">;
 
@@ -11,6 +16,8 @@ export const useUser = () => {
 	const [deleteUser] = useDeleteUserMutation();
 	const { isLoading: userDataLoading, data: userData, refetch } = useFindManyUsersQuery({});
 	const [isOpen, setOpen] = useState<boolean>(false);
+	const [isEditUser, setEditUSer] = useState<boolean>(false);
+	const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation();
 
 	function handleChange(name: keyof FormAttr, value: string, isRequired = true) {
 		if (isRequired && !value) {
@@ -36,14 +43,26 @@ export const useUser = () => {
 	}
 
 	function editUser(user: User) {
+		setEditUSer(true);
 		setForm(user);
 		setOpen(true);
+	}
+
+	async function updateUserData() {
+		try {
+			await updateUser(form).unwrap();
+			refetch();
+			setOpen(false);
+			toast("User updated successfully");
+		} catch (error) {
+			console.log(error);
+			toast("An error occured updating user", { style: { backgroundColor: "red" } });
+		}
 	}
 
 	function submit() {
 		createUser(form)
 			.then((msg: any) => {
-				console.log(msg);
 				refetch();
 				if (msg?.error) {
 					toast(msg?.error?.data);
@@ -53,7 +72,6 @@ export const useUser = () => {
 				setOpen(false);
 			})
 			.catch((err) => {
-				console.log(err.data);
 				toast(err.data, { style: { backgroundColor: "red" } });
 			});
 	}
@@ -77,6 +95,7 @@ export const useUser = () => {
 	};
 
 	const handleOpen = () => {
+		setEditUSer(false);
 		setForm(null);
 		setOpen(true);
 	};
@@ -101,5 +120,8 @@ export const useUser = () => {
 		handleDeleteUser,
 		editUser,
 		isLoading,
+		isEditUser,
+		updateUserData,
+		isUpdating,
 	};
 };

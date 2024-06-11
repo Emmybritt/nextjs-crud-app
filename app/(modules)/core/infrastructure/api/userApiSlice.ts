@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const UserApiSlice = createApi({
 	reducerPath: "UserApiSlice",
 	baseQuery: fetchBaseQuery({
-		baseUrl: "https://caf57a43c4fd318dd84f.free.beeceptor.com/api",
+		baseUrl: "https://cac0d7b94832bf84e22c.free.beeceptor.com/api",
 	}),
 	endpoints: (builder) => ({
 		findManyUsers: builder.query({

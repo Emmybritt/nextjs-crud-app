@@ -16,6 +16,9 @@ interface ModalComponentAttr {
 	submit: () => void;
 	isDisabled: () => boolean;
 	isLoading: boolean;
+	isEditUser: boolean;
+	updateUserData: () => void;
+	isUpdating: boolean;
 }
 
 const ModalComponent: React.FC<ModalComponentAttr> = ({
@@ -28,6 +31,9 @@ const ModalComponent: React.FC<ModalComponentAttr> = ({
 	submit: createUser,
 	isDisabled,
 	isLoading,
+	isEditUser,
+	updateUserData,
+	isUpdating,
 }) => {
 	return (
 		<>
@@ -36,9 +42,15 @@ const ModalComponent: React.FC<ModalComponentAttr> = ({
 				onOk={handleOk}
 				onCancel={handleCancel}
 				footer={() => (
-					<Button label="Add User" loading={isLoading} isDisabled={isDisabled()} onClick={createUser} className="bg-[#0D6EFD] text-white w-full" />
+					<Button
+						label={isEditUser ? "Update User" : "Add User"}
+						loading={isLoading || isUpdating}
+						isDisabled={isDisabled()}
+						onClick={() => (isEditUser ? updateUserData() : createUser())}
+						className="bg-[#0D6EFD] text-white w-full"
+					/>
 				)}>
-				<ModalHeader title="New User" />
+				<ModalHeader title={isEditUser ? "Edit User" : "New User"} />
 				<div className="space-y-[1rem]">
 					<CustomInput
 						value={form?.email}
